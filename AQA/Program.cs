@@ -12,8 +12,8 @@ namespace AQA
     {
         static void Main(string[] args)
         {
-            //// TODO PAN MICHAL: Extract as a separate class to TestScenarios
-            var base_url = "https://tst-04-pfp.test.intelliflo.com/planningandadvice";
+            //// TODO: Extract as a separate class to TestScenarios
+            var base_url = ""; //moved to a separate file;
             IWebDriver driver = new ChromeDriver();
             String nextButtonXpath = "//a[@title='Next']";
 
@@ -134,7 +134,7 @@ namespace AQA
             continueNowButton.Submit();
 
 
-            IWebElement emailAddress = driver.FindElement(By.XPath("//input[@id='pers-det-email']"));
+            IWebElement emailAddress = wait.Until(ExpectedConditions.ElementIsVisible((By.XPath("//input[@id='pers-det-email']"))));
 
             // new object of Select class created in order to do manipulations with drop-down lists
             //Confirm your details page
@@ -174,7 +174,54 @@ namespace AQA
             IWebElement nationalInsuranceNumberInput = driver.FindElement(By.XPath("//input[@id='pers-NINumber']"));
             nationalInsuranceNumberInput.SendKeys("AA018998B");
 
-            //driver.Quit();
+            nextButton = driver.FindElement(By.XPath(nextButtonXpath));
+            nextButton.Submit();
+
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'Declaration')]")));
+            
+            // Go to PFP Profile
+            driver.Navigate().GoToUrl("");  //moved to a separate file;
+
+            // Verify the client was converted and his email address can be found in his PFP Profile
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='personal-details']/div[2]/div/section[1]/div/div[2]/div[2]/div")));
+            Assert.AreEqual(driver.FindElement(By.XPath("//*[@id='personal-details']/div[2]/div/section[1]/div/div[2]/div[2]/div")).Text, "gregg.walton@mail.ru");
+
+
+            // Logout from PFP
+            driver.FindElement(By.XPath("//a[@title='Logout']")).Click();
+
+
+            driver.Navigate().GoToUrl("");  //moved to a separate file;
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), 'Login')]"))).Click();
+
+            // Log into iO
+            IWebElement usernameInput = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//input[@id='username']")));
+            usernameInput.SendKeys("MK04");
+
+            IWebElement passwordInput = driver.FindElement(By.XPath("//input[@id='password']"));
+            passwordInput.SendKeys("qWaszx12");
+
+            IWebElement loginButton = driver.FindElement(By.XPath("//button[contains(text(), 'Login')]"));
+            loginButton.Click();
+
+
+            // Verification whether the client was registered to iO
+
+            IWebElement myRecentClientsLInk = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[contains(text(), 'My Recent Clients')]")));
+            myRecentClientsLInk.Click();
+
+            IWebElement emailAddressInput = driver.FindElement(By.XPath("//input[@id='id_Plan_EmailAddress']"));
+            emailAddressInput.SendKeys("gregg.walton@mail.ru");
+
+            IWebElement searchButton = driver.FindElement(By.XPath("//a[starts-with(text(), 'Search')]"));
+            searchButton.Click();
+
+            IWebElement searchResultsLabel = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(text(), 'Search Results')]")));
+
+            Assert.IsTrue(driver.FindElement(By.XPath("//tr[starts-with(@id, 'ClientSearchNameGrid')]/td[11]/span")).Text.Length > 0);
+
+           
+            driver.Quit();
 
 
         }

@@ -31,9 +31,6 @@ namespace AQA.LightClient.Helpers
             IWebElement loginButton = driver.FindElement(By.XPath("//button[@id='loginbutton']"));
 
 
-            // emailInputField.Clear();
-            // passwordInputField.Clear();
-
             emailInputField.SendKeys(login);
             passwordInputField.SendKeys(password);
             loginButton.Submit();
