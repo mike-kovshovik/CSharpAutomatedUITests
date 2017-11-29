@@ -224,6 +224,9 @@ namespace AQA
             driver.Quit();
             // bla bla bla
 
+            //some text added to check how the branches and PRs in github work
+
+
         }
     }
 }
