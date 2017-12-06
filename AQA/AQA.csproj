@@ -71,6 +71,7 @@
       <Link>geckodriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="LightClient\Helpers\Test Data.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LightClient\TestScenarios\" />

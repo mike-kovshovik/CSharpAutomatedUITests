@@ -13,7 +13,7 @@ namespace AQA
         static void Main(string[] args)
         {
             //// TODO: Extract as a separate class to TestScenarios
-            var base_url = ""; //moved to a separate file;
+            var base_url = "https://intelliflo99.uat-mypfp.co.uk/planningandadvice"; //moved to a separate file;
             IWebDriver driver = new ChromeDriver();
             String nextButtonXpath = "//a[@title='Next']";
 
@@ -138,6 +138,7 @@ namespace AQA
 
             // new object of Select class created in order to do manipulations with drop-down lists
             //Confirm your details page
+
             SelectElement title = new SelectElement(driver.FindElement(By.XPath("//select[@id='pers-det-title']")));
             title.SelectByValue("Mr");
 
@@ -180,7 +181,7 @@ namespace AQA
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'Declaration')]")));
             
             // Go to PFP Profile
-            driver.Navigate().GoToUrl("");  //moved to a separate file;
+            driver.Navigate().GoToUrl("https://tst-04-pfp.test.intelliflo.com/profile");  //moved to a separate file;
 
             // Verify the client was converted and his email address can be found in his PFP Profile
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='personal-details']/div[2]/div/section[1]/div/div[2]/div[2]/div")));
@@ -191,7 +192,7 @@ namespace AQA
             driver.FindElement(By.XPath("//a[@title='Logout']")).Click();
 
 
-            driver.Navigate().GoToUrl("");  //moved to a separate file;
+            driver.Navigate().GoToUrl("https://tst-04.test.intelliflo.com/nio/dashboard/userdashboard");  //moved to a separate file;
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), 'Login')]"))).Click();
 
             // Log into iO
