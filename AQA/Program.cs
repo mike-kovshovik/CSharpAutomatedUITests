@@ -10,17 +10,17 @@ namespace AQA
 {
     public class Program
     {
+      
         static void Main(string[] args)
         {
-            //// TODO: Extract as a separate class to TestScenarios
-            var base_url = ""; //moved to a separate file;
             IWebDriver driver = new ChromeDriver();
+            var testDataVariables = new TestData();
+            var helper = new LoginHelper();
             String nextButtonXpath = "//a[@title='Next']";
 
-            var helper = new LoginHelper();
-
+            
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(base_url);
+            driver.Navigate().GoToUrl(testDataVariables.baseUrlLightClientsProd99);
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'Looking for a quick, simple investment? Start here')]")));
@@ -34,6 +34,8 @@ namespace AQA
             Actions actions = new Actions(driver);
             actions.MoveToElement(pageFooter);
             actions.Perform();
+
+            
 
 
             // locating terms of service checkbox
@@ -222,8 +224,15 @@ namespace AQA
 
            
             driver.Quit();
-            // bla bla bla
+            
 
         }
+
+
     }
+
+
+
+
+
 }
