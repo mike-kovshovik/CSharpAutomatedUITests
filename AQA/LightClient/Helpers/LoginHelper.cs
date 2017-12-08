@@ -20,22 +20,6 @@ namespace AQA.LightClient.Helpers
             allowAccessButton.Submit();
         }
 
-        public void FacebookLogin(IWebDriver driver, WebDriverWait wait, string login, string password) // signing up with Facebook account
-        {
-            IWebElement loginWithFacebook = driver.FindElement(By.XPath("//a[@title='Sign up with Facebook']"));
-            loginWithFacebook.Click();
-
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@id='header_block']")));
-            IWebElement emailInputField = driver.FindElement(By.XPath("//input[@id='email']"));
-            IWebElement passwordInputField = driver.FindElement(By.XPath("//input[@id='pass']"));
-            IWebElement loginButton = driver.FindElement(By.XPath("//button[@id='loginbutton']"));
-
-
-            emailInputField.SendKeys(login);
-            passwordInputField.SendKeys(password);
-            loginButton.Submit();
-
-            // bla bla
-        }
-    }
+     }
+    
 }

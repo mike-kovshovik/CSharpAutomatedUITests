@@ -1,19 +1,23 @@
 ﻿using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
-using AQA.LightClient.Helpers;
 
 namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 {
-    class HowServiceWorksPage
+    class YourRiskToleranceProfilePage
     {
         private IWebDriver driver;
         private WebDriverWait wait;
 
-        private By howServiceWorksHeaderPrototype = By.XPath("//b[contains(text(), 'How the service works')]");
+        private By riskToleranceProfileHeaderPrototype = By.XPath("//b[contains(text(), 'Your risk tolerance profile')]");
         private By nextButton = By.XPath("//a[@title='Next']");
 
 
-        public HowServiceWorksPage(IWebDriver driver, WebDriverWait wait)
+        public YourRiskToleranceProfilePage(IWebDriver driver, WebDriverWait wait)
         {
             this.driver = driver;
             this.wait = wait;
@@ -21,11 +25,8 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 
         public void PressNextButton()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(howServiceWorksHeaderPrototype));
+            wait.Until(ExpectedConditions.ElementIsVisible(riskToleranceProfileHeaderPrototype));
             driver.FindElement(nextButton).Submit();
-
-            //return new YourInvestmentChoicesPage(driver, wait);
         }
-        
     }
 }

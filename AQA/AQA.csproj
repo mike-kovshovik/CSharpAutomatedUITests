@@ -59,11 +59,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\AboutYourRiskCapacityPage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\AttitudeToRiskPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\ConfirmYourDetailsPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\ConfirmYourInvestmentChoicesPage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\HowServiceWorksPage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\LandingPageForLightClients.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\OurRecommendationForYouPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\RiskCapacityQuestionnairePages.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\RiskToleranceQuestionnairePages.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\YourInvestmentChoicesPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\YourInvestmentProjectionPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\YourProposedRiskCategoryPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\YourRiskToleranceProfilePage.cs" />
     <Compile Include="LightClient\Helpers\TestData.cs" />
     <Compile Include="LightClient\TestScenarios\LightClientsFlowTests.cs" />
     <Compile Include="Program.cs" />
@@ -79,7 +87,6 @@
       <Link>geckodriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="LightClient\Helpers\Test Data.txt" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

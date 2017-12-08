@@ -13,11 +13,7 @@ namespace AQA
       
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-=======
-            //// TODO: Extract as a separate class to TestScenarios
-            var base_url = "https://intelliflo99.uat-mypfp.co.uk/planningandadvice"; //moved to a separate file;
->>>>>>> a5df87e2fbf21c7ad43119b1c6e3064fc3de0589
+
             IWebDriver driver = new ChromeDriver();
             var testDataVariables = new TestData();
             var helper = new LoginHelper();
@@ -60,7 +56,7 @@ namespace AQA
 
 
             //helper.LinkedInLogin(driver, wait, "darryl.snyder@bk.ru", "P@ssw0rd12"); // Signing up with linkedin
-            helper.FacebookLogin(driver, wait, "gregg.walton@mail.ru", "qWaszx12"); // Signing up with linkedin
+            //helper.FacebookLogin(driver, wait, "gregg.walton@mail.ru", "qWaszx12"); // Signing up with linkedin
 
 
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'How the service works')]")));
@@ -232,9 +228,6 @@ namespace AQA
             driver.Quit();
             
 
-            // asd
-
-            //some text added to check how the branches and PRs in github work
 
 
         }
