@@ -35,7 +35,7 @@ namespace AQA.LightClient.Helpers
             passwordInputField.SendKeys(password);
             loginButton.Submit();
 
-            // bla bla bla
+            // bla bla
         }
     }
 }
