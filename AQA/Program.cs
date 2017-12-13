@@ -12,15 +12,15 @@ namespace AQA
     {
         static void Main(string[] args)
         {
-            //// TODO: Extract as a separate class to TestScenarios
-            var base_url = ""; //moved to a separate file;
+
             IWebDriver driver = new ChromeDriver();
+            var testDataVariables = new TestData();
+            var helper = new LoginHelper();
             String nextButtonXpath = "//a[@title='Next']";
 
-            var helper = new LoginHelper();
-
+            
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(base_url);
+            driver.Navigate().GoToUrl(TestData.baseUrlLightClientsProd99);
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'Looking for a quick, simple investment? Start here')]")));
@@ -34,6 +34,8 @@ namespace AQA
             Actions actions = new Actions(driver);
             actions.MoveToElement(pageFooter);
             actions.Perform();
+
+            
 
 
             // locating terms of service checkbox
@@ -53,7 +55,7 @@ namespace AQA
 
 
             //helper.LinkedInLogin(driver, wait, "darryl.snyder@bk.ru", "P@ssw0rd12"); // Signing up with linkedin
-            helper.FacebookLogin(driver, wait, "gregg.walton@mail.ru", "qWaszx12"); // Signing up with linkedin
+            //helper.FacebookLogin(driver, wait, "gregg.walton@mail.ru", "qWaszx12"); // Signing up with linkedin
 
 
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'How the service works')]")));
@@ -138,6 +140,7 @@ namespace AQA
 
             // new object of Select class created in order to do manipulations with drop-down lists
             //Confirm your details page
+
             SelectElement title = new SelectElement(driver.FindElement(By.XPath("//select[@id='pers-det-title']")));
             title.SelectByValue("Mr");
 
@@ -176,11 +179,12 @@ namespace AQA
 
             nextButton = driver.FindElement(By.XPath(nextButtonXpath));
             nextButton.Submit();
-
+            
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'Declaration')]")));
             
             // Go to PFP Profile
-            driver.Navigate().GoToUrl("");  //moved to a separate file;
+            driver.Navigate().GoToUrl("https://tst-04-pfp.test.intelliflo.com/profile");  //moved to a separate file;
 
             // Verify the client was converted and his email address can be found in his PFP Profile
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='personal-details']/div[2]/div/section[1]/div/div[2]/div[2]/div")));
@@ -191,7 +195,7 @@ namespace AQA
             driver.FindElement(By.XPath("//a[@title='Logout']")).Click();
 
 
-            driver.Navigate().GoToUrl("");  //moved to a separate file;
+            driver.Navigate().GoToUrl("https://tst-04.test.intelliflo.com/nio/dashboard/userdashboard");  //moved to a separate file;
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(text(), 'Login')]"))).Click();
 
             // Log into iO
@@ -210,7 +214,7 @@ namespace AQA
             IWebElement myRecentClientsLInk = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[contains(text(), 'My Recent Clients')]")));
             myRecentClientsLInk.Click();
 
-            IWebElement emailAddressInput = driver.FindElement(By.XPath("//input[@id='id_Plan_EmailAddress']"));
+            IWebElement emailAddressInput = driver.FindElement(By.XPath("//input[@id='id_email']"));
             emailAddressInput.SendKeys("gregg.walton@mail.ru");
 
             IWebElement searchButton = driver.FindElement(By.XPath("//a[starts-with(text(), 'Search')]"));
@@ -222,8 +226,17 @@ namespace AQA
 
            
             driver.Quit();
+            
+
 
 
         }
+
+
     }
+
+
+
+
+
 }

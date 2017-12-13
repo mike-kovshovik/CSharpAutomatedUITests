@@ -303,3 +303,5 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
+/AQA/LightClient/Helpers/Test Data.txt
+/AQA/LightClient/Helpers/TestData.cs
