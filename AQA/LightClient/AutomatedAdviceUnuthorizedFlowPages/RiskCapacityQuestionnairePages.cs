@@ -22,7 +22,7 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
             this.wait = wait;
         }
 
-        public void answerRiskToleranceQuestions()
+        public void AnswerRiskToleranceQuestions()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(riskCapacityQuestionsHeaderPrototype));
             for (int i = 0; i <= 2; i++)

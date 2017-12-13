@@ -10,8 +10,8 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 {
     class OurRecommendationForYouPage
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
+        private IWebDriver _driver;
+        private WebDriverWait _wait;
 
         private By ourRecommendationForYouHeaderPrototype = By.XPath("//b[contains(text(), 'Our recommendation for you')]");
         private By continueNowButton = By.XPath("//a[@title='Continue now']");
@@ -19,15 +19,15 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 
         public OurRecommendationForYouPage(IWebDriver driver, WebDriverWait wait)
         {
-            this.driver = driver;
-            this.wait = wait;
+            this._driver = driver;
+            this._wait = wait;
         }
 
 
         public void PressContinueNowButton()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(ourRecommendationForYouHeaderPrototype));
-            driver.FindElement(continueNowButton).Submit();
+            _wait.Until(ExpectedConditions.ElementIsVisible(ourRecommendationForYouHeaderPrototype));
+            _driver.FindElement(continueNowButton).Submit();
         }
     }
 }

@@ -10,8 +10,8 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 {
     class ConfirmYourDetailsPage
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
+        private readonly IWebDriver driver;
+        private readonly WebDriverWait wait;
 
         private By confirmYourDetailsHeaderPrototype = By.XPath("//b[contains(text(), 'Confirm your details')]");
         private By nextButton = By.XPath("//a[@title='Next']");
@@ -36,7 +36,7 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
             this.wait = wait;
         }
 
-       public ConfirmYourDetailsPage selectTitle(string title)
+       public ConfirmYourDetailsPage SelectTitle(string title)
         {
             SelectElement titleDropDown = new SelectElement(driver.FindElement(titleSelect));
             titleDropDown.SelectByText(title);
@@ -44,9 +44,9 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
         }
 
 
-        public ConfirmYourDetailsPage selectDoB(string day, string month, string year)
+        public ConfirmYourDetailsPage SelectDoB(string day, string month, string year)
         {
-            SelectElement dayDropDown = new SelectElement(driver.FindElement(dateOfBirthSelect));
+            var dayDropDown = new SelectElement(driver.FindElement(dateOfBirthSelect));
             dayDropDown.SelectByText(day);
 
             SelectElement monthDropDown = new SelectElement(driver.FindElement(monthOfBirthSelect));
@@ -59,30 +59,50 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
         }
 
 
-        public ConfirmYourDetailsPage selectGender(string gender)
+        public ConfirmYourDetailsPage SelectGender(string gender)
         {
             SelectElement genderDropDown = new SelectElement(driver.FindElement(genderSelect));
             genderDropDown.SelectByText(gender);
             return this;
         }
 
-        public ConfirmYourDetailsPage enterContactNumber(string phoneNumber)
+        public ConfirmYourDetailsPage EnterContactNumber(string phoneNumber)
         {
             driver.FindElement(contactNumberInput).SendKeys(phoneNumber);
             return this;
         }
 
 
-        public ConfirmYourDetailsPage tickCheckBox(By checkbox)
+        public ConfirmYourDetailsPage TickCheckBox(By checkbox)
         {
             driver.FindElement(checkbox).Click();
             return this;
         }
 
 
+        public ConfirmYourDetailsPage FillInAddressLineOne(string addressLineOne)
+        {
+            driver.FindElement(addressLineOneInput).SendKeys(addressLineOne);
+            return this;
+        }
 
+        public ConfirmYourDetailsPage FillInTown(string town)
+        {
+            driver.FindElement(townInput).SendKeys(town);
+            return this;
+        }
 
+        public ConfirmYourDetailsPage FillInPostCode(string postcode)
+        {
+            driver.FindElement(postalCodeInput).SendKeys(postcode);
+            return this;
+        }
 
+        public ConfirmYourDetailsPage FillInNINumber(string niNumber)
+        {
+            driver.FindElement(nationalInsuranceNumberInput).SendKeys(niNumber);
+            return this;
+        }
 
         public void PressNextButton()
         {

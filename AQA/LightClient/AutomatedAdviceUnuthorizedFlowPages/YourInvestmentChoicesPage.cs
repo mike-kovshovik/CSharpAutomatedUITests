@@ -10,8 +10,8 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 {
     class YourInvestmentChoicesPage
     {
-        IWebDriver driver;
-        WebDriverWait wait;
+        IWebDriver _driver;
+        WebDriverWait _wait;
 
         private By yourInvestmentChoicesHeaderPrototype = By.XPath("//b[contains(text(), 'Your investment Choices')]");
         private By nextButton = By.XPath("//a[@title='Next']");
@@ -19,14 +19,14 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 
         public YourInvestmentChoicesPage(IWebDriver driver, WebDriverWait wait)
         {
-            this.driver = driver;
-            this.wait = wait;
+            this._driver = driver;
+            this._wait = wait;
         }
 
         public void PressNextButton()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(yourInvestmentChoicesHeaderPrototype));
-            driver.FindElement(nextButton).Submit();
+            _wait.Until(ExpectedConditions.ElementIsVisible(yourInvestmentChoicesHeaderPrototype));
+            _driver.FindElement(nextButton).Submit();
         }
 
 

@@ -63,9 +63,15 @@
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\AttitudeToRiskPage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\ConfirmYourDetailsPage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\ConfirmYourInvestmentChoicesPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\DeclarationPage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\HowServiceWorksPage.cs" />
+    <Compile Include="LightClient\IntelligentOfficePages\IntelligentOfficeClientSearchPage.cs" />
+    <Compile Include="LightClient\IntelligentOfficePages\IntelligentOfficeDashboardPage.cs" />
+    <Compile Include="LightClient\IntelligentOfficePages\IntelligentOfficeLogInPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\LandingPage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\LandingPageForLightClients.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\OurRecommendationForYouPage.cs" />
+    <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\ProfilePage.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\RiskCapacityQuestionnairePages.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\RiskToleranceQuestionnairePages.cs" />
     <Compile Include="LightClient\AutomatedAdviceUnuthorizedFlowPages\YourInvestmentChoicesPage.cs" />

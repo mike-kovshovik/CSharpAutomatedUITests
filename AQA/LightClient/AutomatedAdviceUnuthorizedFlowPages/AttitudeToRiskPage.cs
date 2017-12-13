@@ -13,7 +13,7 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
         IWebDriver driver;
         WebDriverWait wait;
 
-        private By attitudeToInvestmentRiskHeaderPrototype = By.XPath("//b[contains(text(), 'About your attitude to investment risk')]");
+        private By AttitudeToInvestmentRiskHeaderPrototype = By.XPath("//b[contains(text(), 'About your attitude to investment risk')]");
         private By nextButton = By.XPath("//a[@title='Next']");
 
 
@@ -25,7 +25,7 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 
         public void PressNextButton()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(attitudeToInvestmentRiskHeaderPrototype));
+            wait.Until(ExpectedConditions.ElementIsVisible(AttitudeToInvestmentRiskHeaderPrototype));
             driver.FindElement(nextButton).Submit();
         }
 

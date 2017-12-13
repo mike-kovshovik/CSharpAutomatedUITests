@@ -7,8 +7,8 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
 {
     class LandingPageForLightClients
     {
-        private IWebDriver driver;
-        private WebDriverWait wait;
+        private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
 
 
         private By pageHeaderPrototype = By.XPath("//b[contains(text(), 'Looking for a quick, simple investment? Start here')]");
@@ -25,34 +25,32 @@ namespace AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages
         // created constructor passing driver and wait in parameters
         public LandingPageForLightClients(IWebDriver driver, WebDriverWait wait)
         {
-            this.driver = driver;
-            this.wait = wait;
+            this._driver = driver;
+            this._wait = wait;
         }
 
-        public LandingPageForLightClients tickCheckbox(By checkboxLocator)
+        public LandingPageForLightClients TickCheckbox(By checkboxLocator)
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(pageHeaderPrototype));
-            Actions clicker = new Actions(driver);
-            clicker.MoveToElement(driver.FindElement(checkboxLocator), 0, 0).Click().Perform();
+            _wait.Until(ExpectedConditions.ElementIsVisible(pageHeaderPrototype));
+            Actions clicker = new Actions(_driver);
+            clicker.MoveToElement(_driver.FindElement(checkboxLocator), 0, 0).Click().Perform();
             return this;
         }
 
 
-        public void pressStartPlanning()
+        public void PressStartPlanning()
         {
-            wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(startPlanningButton))).Click();
+            _wait.Until(ExpectedConditions.ElementToBeClickable(_driver.FindElement(startPlanningButton))).Click();
         }
 
-        public void signUpWithFacebook(String login, String password)
+        public void SignUpWithFacebook(String login, String password)
         {
-            wait.Until(ExpectedConditions.ElementToBeClickable(signUpWithFacebookButton)).Click();
-            wait.Until(ExpectedConditions.ElementIsVisible(faceBookLoginPagePrototype)); // wait for the login page to load
-            driver.FindElement(emailInput).SendKeys(login);
-            driver.FindElement(passwordInput).SendKeys(password);
-            driver.FindElement(loginButton).Click();
+            _wait.Until(ExpectedConditions.ElementToBeClickable(signUpWithFacebookButton)).Click();
+            _wait.Until(ExpectedConditions.ElementIsVisible(faceBookLoginPagePrototype)); // wait for the login page to load
+            _driver.FindElement(emailInput).SendKeys(login);
+            _driver.FindElement(passwordInput).SendKeys(password);
+            _driver.FindElement(loginButton).Click();
         }
-
-        
 
 
     }

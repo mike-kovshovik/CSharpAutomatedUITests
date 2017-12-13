@@ -10,7 +10,6 @@ namespace AQA
 {
     public class Program
     {
-      
         static void Main(string[] args)
         {
 
@@ -21,7 +20,7 @@ namespace AQA
 
             
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(testDataVariables.baseUrlLightClientsProd99);
+            driver.Navigate().GoToUrl(TestData.baseUrlLightClientsProd99);
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'Looking for a quick, simple investment? Start here')]")));
@@ -180,7 +179,8 @@ namespace AQA
 
             nextButton = driver.FindElement(By.XPath(nextButtonXpath));
             nextButton.Submit();
-
+            
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//b[contains(text(), 'Declaration')]")));
             
             // Go to PFP Profile
@@ -214,7 +214,7 @@ namespace AQA
             IWebElement myRecentClientsLInk = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[contains(text(), 'My Recent Clients')]")));
             myRecentClientsLInk.Click();
 
-            IWebElement emailAddressInput = driver.FindElement(By.XPath("//input[@id='id_Plan_EmailAddress']"));
+            IWebElement emailAddressInput = driver.FindElement(By.XPath("//input[@id='id_email']"));
             emailAddressInput.SendKeys("gregg.walton@mail.ru");
 
             IWebElement searchButton = driver.FindElement(By.XPath("//a[starts-with(text(), 'Search')]"));

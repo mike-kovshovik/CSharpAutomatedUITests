@@ -1,29 +1,29 @@
 ﻿using System;
 using AQA.LightClient.Helpers;
 using AQA.LightClient.AutomatedAdviceUnuthorizedFlowPages;
+using AQA.LightClient.IntelligentOfficePages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 
-
 namespace AQA
 {
     class LightClientsFlowTests
     {
-        IWebDriver driver;
-        WebDriverWait wait;
+        IWebDriver _driver;
+        WebDriverWait _wait;
         TestData testDataVariables;
 
         [SetUp]
         public void Initialize()
         {
-            driver = new ChromeDriver();
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            _driver = new ChromeDriver();
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
             testDataVariables = new TestData();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(testDataVariables.baseUrlLightClientsTST04);  
+            _driver.Manage().Window.Maximize();
+            _driver.Navigate().GoToUrl(TestData.baseUrlLightClientsTST04);  
         }
 
 
@@ -31,99 +31,128 @@ namespace AQA
         public void ExecuteTest()
         {
             // create an object of LightClientsLandingPage
-            LandingPageForLightClients landingPage = new LandingPageForLightClients(driver, wait);
-
+            LandingPageForLightClients landingPage = new LandingPageForLightClients(_driver, _wait);
+                
             // tick two checkboxes at the bottom of the page
             landingPage
-                .tickCheckbox(landingPage.heavingReadTermsConditionsCheckbox)
-                .tickCheckbox(landingPage.noDebtsCheckbox);
+                .TickCheckbox(landingPage.heavingReadTermsConditionsCheckbox)
+                .TickCheckbox(landingPage.noDebtsCheckbox);
 
 
             // press Start Planning button
-            landingPage.pressStartPlanning();
+            landingPage.PressStartPlanning();
 
 
             // sign up to Automated Advice with Facebook account
-            landingPage.signUpWithFacebook(testDataVariables.facebookLoginEmail, testDataVariables.facebookPassword);
+            landingPage.SignUpWithFacebook(TestData.facebookLoginEmail, TestData.facebookPassword);
 
 
             // submit Next button on How Service Works page
-            HowServiceWorksPage howServiceWorks = new HowServiceWorksPage(driver, wait);
+            var howServiceWorks = new HowServiceWorksPage(_driver, _wait);
             howServiceWorks.PressNextButton();
 
 
             // submit Next button on Your investment Choices page
-            YourInvestmentChoicesPage investmentChoicesPage = new YourInvestmentChoicesPage(driver, wait);
+            var investmentChoicesPage = new YourInvestmentChoicesPage(_driver, _wait);
             investmentChoicesPage.PressNextButton();
 
 
             // submit Next button on About your attitude to investment risk page
-            AttitudeToRiskPage attitudeToRiskPage = new AttitudeToRiskPage(driver, wait);
+            var attitudeToRiskPage = new AttitudeToRiskPage(_driver, _wait);
             attitudeToRiskPage.PressNextButton();
 
 
             // answer Risk Tolerance Questions
-            RiskToleranceQuestionnairePages riskToleranceQuestionnaire = new RiskToleranceQuestionnairePages(driver, wait);
-            riskToleranceQuestionnaire.answerRiskToleranceQuestions();
+            var riskToleranceQuestionnaire = new RiskToleranceQuestionnairePages(_driver, _wait);
+            riskToleranceQuestionnaire.AnswerRiskToleranceQuestions();
 
 
             // press Next on Your risk tolerance profile page
-            YourRiskToleranceProfilePage riskToleranceProfilePage = new YourRiskToleranceProfilePage(driver, wait);
+            var riskToleranceProfilePage = new YourRiskToleranceProfilePage(_driver, _wait);
             riskToleranceProfilePage.PressNextButton();
 
 
             // press Next on Your investment projection
-            YourInvestmentProjectionPage yourInvestmentProjection = new YourInvestmentProjectionPage(driver, wait);
+            var yourInvestmentProjection = new YourInvestmentProjectionPage(_driver, _wait);
             yourInvestmentProjection.PressNextButton();
 
 
             // press Next on Your risk capacity page
-            AboutYourRiskCapacityPage aboutYourRiskCapacity = new AboutYourRiskCapacityPage(driver, wait);
+            var aboutYourRiskCapacity = new AboutYourRiskCapacityPage(_driver, _wait);
             aboutYourRiskCapacity.PressNextButton();
 
 
             // answer Risk Capacity Questions
-            RiskCapacityQuestionnairePages riskCapacityQuestionnaire = new RiskCapacityQuestionnairePages(driver, wait);
-            riskCapacityQuestionnaire.answerRiskToleranceQuestions();
+            var riskCapacityQuestionnaire = new RiskCapacityQuestionnairePages(_driver, _wait);
+            riskCapacityQuestionnaire.AnswerRiskToleranceQuestions();
 
 
             // press Next on Your proposed risk category page
-            YourProposedRiskCategoryPage yourProposedRiskCategory = new YourProposedRiskCategoryPage(driver, wait);
+            var yourProposedRiskCategory = new YourProposedRiskCategoryPage(_driver, _wait);
             yourProposedRiskCategory.PressNextButton();
 
 
             // press Next on Please confirm your investment choices page
-            ConfirmYourInvestmentChoicesPage confirmYourInvestmentChoices = new ConfirmYourInvestmentChoicesPage(driver, wait);
+            var confirmYourInvestmentChoices = new ConfirmYourInvestmentChoicesPage(_driver, _wait);
             confirmYourInvestmentChoices.PressNextButton();
 
 
             // press ContinueNow on Our recommendation for you page
-            OurRecommendationForYouPage ourRecommendationForYou = new OurRecommendationForYouPage(driver, wait);
+            var ourRecommendationForYou = new OurRecommendationForYouPage(_driver, _wait);
             ourRecommendationForYou.PressContinueNowButton();
 
 
             // fill out the fields on Confirm your details page
-            ConfirmYourDetailsPage confirmYourDetails = new ConfirmYourDetailsPage(driver, wait);
+            var confirmYourDetails = new ConfirmYourDetailsPage(_driver, _wait);
             confirmYourDetails
-                .selectTitle("Mr")
-                .selectDoB("14", "Sep", "1984")
-                .selectGender("Male")
-                .enterContactNumber("+44 207 111 7755")
-                .tickCheckBox(ConfirmYourDetailsPage.residencyCheckbox)
-                .tickCheckBox(ConfirmYourDetailsPage.citizenshipCheckbox);
+                .SelectTitle("Mr")
+                .SelectDoB("14", "Sep", "1984")
+                .SelectGender("Male")
+                .EnterContactNumber("+44 207 111 7755")
+                .TickCheckBox(ConfirmYourDetailsPage.residencyCheckbox)
+                .TickCheckBox(ConfirmYourDetailsPage.citizenshipCheckbox)
+                .FillInAddressLineOne("Address Line 1")
+                .FillInTown("London")
+                .FillInPostCode("KT1 2PD")
+                .FillInNINumber("AA018998B")
+                .PressNextButton();
+
+            // verify page header is Declaration and go to PFP LandingPage
+            var declaration = new DeclarationPage(_driver, _wait);
+            declaration.VerifyPageHeaderIsDeclaration("Declaration");
+            declaration.GoToPfpHomePage();
+
+            // Click Update Profile from the Landing Page
+            var landing = new LandingPage(_driver, _wait);
+            landing.GoToProfile();
+
+            // Verify client's email address is present is Contact Details
+            var profile = new ProfilePage(_driver, _wait);
+            profile
+                .IsClientEmailIsPresentInContactDetails(TestData.facebookLoginEmail)
+                .LogoutFromPfp();
 
 
+            // Log into Intelligent Office
+            var intellignentOffice = new IntelligentOfficeLogInPage(_driver, _wait);
+            intellignentOffice.LogInToIntelligentOffice(TestData.intelligentOfficeLoginPageTST04, TestData.intelligendOfficeTST04Login, TestData.intelligendOfficeTST04Password);
 
+            // Select My Recent Items
+            var dashboard = new IntelligentOfficeDashboardPage(_driver, _wait);
+            dashboard.SelectMyRecentClients();
+
+            // verify whether the Light Client has been converted and can be found in Intelligent Office
+
+            var clientSeachPage = new IntelligentOfficeClientSearchPage(_driver, _wait);
+            clientSeachPage.isLightClientRegisteredIniO(TestData.facebookLoginEmail);
 
         }
 
         [TearDown]
         public void CleanUp()
         {
-            //driver.Close();
+            _driver.Close();
         }
-
-
 
     }
 }
